@@ -24,7 +24,7 @@
 //----------------------------------------------------------------------------
 
 /*
- * Защита через номер тома:
+ * Р—Р°С‰РёС‚Р° С‡РµСЂРµР· РЅРѕРјРµСЂ С‚РѕРјР°:
  */
 int sub_10002920() ;
 /*
@@ -56,7 +56,7 @@ extern "C" DllExport void entry_rtv_mom_cp_part_attr( char *parm, int *returnCod
   if ( !UF_is_initialized() )
   {
     errorCode = UF_initialize();
-	*returnCode = errorCode;
+	  *returnCode = errorCode;
     if ( errorCode ) return ;
   }
 
@@ -64,7 +64,7 @@ extern "C" DllExport void entry_rtv_mom_cp_part_attr( char *parm, int *returnCod
   UF_MOM_ask_interp_from_param ( parm, &interp ) ;
   /* Get the MOM id from the ufusr param */
   UF_MOM_ask_mom (parm, &mom) ;
-  /*Создаем функции в интепретаторе*/
+  /*РЎРѕР·РґР°РµРј С„СѓРЅРєС†РёРё РІ РёРЅС‚РµРїСЂРµС‚Р°С‚РѕСЂРµ*/
   UF_MOM_extend_xlator ( mom , "EXTN_rtv_mom_cp_part_attr", sub_10001080 ) ;
 
   *returnCode = 0;
@@ -117,17 +117,17 @@ static int sub_10001080
   const char *kin_retract_distance ;
   double  retract_distance ;
   double  dx , dy , dz ;
-  
+
   int  dword_10003334 = 0 ;
 
   if ( sub_10002920() == 0 )
   {
-	const int Size = 1024 ;
-    char  str[Size]="НА ЭТОМ РАБОЧЕМ МЕСТЕ ПОСТПРОЦЕССОР НЕ МОЖЕТ БЫТЬ ЗАПУЩЕН\n \
-Москва, CSoft (ЗАО \"СиСофт\"),\nТелефон: +7 (495) 913-22-22, Факс: +7 (495) 913-22-21\n \
-e-mail: jura@csoft.ru, g00@inbox.ru\nHTTP: http://www.csoft.ru\n\n(c) 2007.\n\n\nПоследняя редакция 2009\0";
+	  const int Size = 1024 ;
+    char  str[Size]="РќРђ Р­РўРћРњ Р РђР‘РћР§Р•Рњ РњР•РЎРўР• РџРћРЎРўРџР РћР¦Р•РЎРЎРћР  РќР• РњРћР–Р•Рў Р‘Р«РўР¬ Р—РђРџРЈР©Р•Рќ\n \
+РњРѕСЃРєРІР°, CSoft (Р—РђРћ \"РЎРёРЎРѕС„С‚\"),\nРўРµР»РµС„РѕРЅ: +7 (495) 913-22-22, Р¤Р°РєСЃ: +7 (495) 913-22-21\n \
+e-mail: jura@csoft.ru, g00@inbox.ru\nHTTP: http://www.csoft.ru\n\n(c) 2007.\n\n\nРџРѕСЃР»РµРґРЅСЏСЏ СЂРµРґР°РєС†РёСЏ 2009\0";
 
-    UF_UI_display_nonmodal_msg("Внимание!", str, UF_UI_MSG_POS_CURSOR);
+    UF_UI_display_nonmodal_msg("Р’РЅРёРјР°РЅРёРµ!", str, UF_UI_MSG_POS_CURSOR);
     UF_terminate();
     return ( 0 ) ;
   }
@@ -143,7 +143,7 @@ e-mail: jura@csoft.ru, g00@inbox.ru\nHTTP: http://www.csoft.ru\n\n(c) 2007.\n\n\
       UF_MOM_ask_assoc_double_array(mom_id, "out_angle_pos", "0", &angle1);
       UF_MOM_ask_assoc_double_array(mom_id, "out_angle_pos", "1", &angle2);
       sprintf(Dest, "MOM_output_literal \"PLANE SPATIAL SPA+0 SPB%.3lf SPC%.3lf STAY TABLE ROT \"", angle1, angle2);
-      UF_MOM_execute_command(mom_id, Dest);	  
+      UF_MOM_execute_command(mom_id, Dest);
    	}
 
    	if (0==strcmp(argv[1],"PLANE_moving"))
@@ -156,26 +156,26 @@ e-mail: jura@csoft.ru, g00@inbox.ru\nHTTP: http://www.csoft.ru\n\n(c) 2007.\n\n\
       sprintf(Dest, "MOM_output_literal \"L X%.3lf Y%.3lf F MAX\"", x, y);
       UF_MOM_execute_command(mom_id, Dest);
       sprintf(Dest, "MOM_output_literal \"L Z%.3lf F MAX\"", z);
-	  UF_MOM_execute_command(mom_id, Dest);
-	  sprintf(Dest, "MOM_output_literal \"M129 \"");
+	    UF_MOM_execute_command(mom_id, Dest);
+	    sprintf(Dest, "MOM_output_literal \"M129 \"");
       UF_MOM_execute_command(mom_id, Dest);
-   	}	
+   	}
 
    	if (0==strcmp(argv[1],"INPUT_RETRACT"))
    	{
-     int  ia4[2]={0,0},
-          ip6[2] = {1,1},
-          resp;
-     double ra5[2] = { 100, 100 } ;
-     char   menu[2][16]; //={":Отвод=",":Врезание="};
-     strcpy(&menu[0][0], ":Отвод (мм)=");
-     strcpy(&menu[1][0], ":Врезание (мм)=");
-     //ra5[0] = *n0;
-     //ra5[1] = *n1;
+      int  ia4[2]={0,0},
+           ip6[2] = {1,1},
+           resp;
+      double ra5[2] = { 100, 100 } ;
+      char   menu[2][16]; //={":РћС‚РІРѕРґ=",":Р’СЂРµР·Р°РЅРёРµ="};
+      strcpy(&menu[0][0], ":РћС‚РІРѕРґ (РјРј)=");
+      strcpy(&menu[1][0], ":Р’СЂРµР·Р°РЅРёРµ (РјРј)=");
+      //ra5[0] = *n0;
+      //ra5[1] = *n1;
 
       UF_UI_close_listing_window();
       UF_UI_lock_ug_access(UF_UI_FROM_CUSTOM);
-      resp = uc1608(":Введите значения отвода и врезания инструмента:", menu, 2, ia4, ra5, ip6);
+      resp = uc1608(":Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёСЏ РѕС‚РІРѕРґР° Рё РІСЂРµР·Р°РЅРёСЏ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°:", menu, 2, ia4, ra5, ip6);
         //*n0 = ra5[0];
         //*n1 = ra5[1];
       UF_MOM_set_double(mom_id, "kin_retract_distance", ra5[0]);
@@ -185,7 +185,7 @@ e-mail: jura@csoft.ru, g00@inbox.ru\nHTTP: http://www.csoft.ru\n\n(c) 2007.\n\n\
 
    	if (0==strcmp(argv[1],"INPUT_RETRACT_DIST"))
    	{
-      uc1601(":Ввод дистанций отвода и врезания:", 0);
+      uc1601(":Р’РІРѕРґ РґРёСЃС‚Р°РЅС†РёР№ РѕС‚РІРѕРґР° Рё РІСЂРµР·Р°РЅРёСЏ:", 0);
       UF_MOM_ask_assoc_double_array(mom_id, "prev_mcs_goto", "0", &x);
       UF_MOM_ask_assoc_double_array(mom_id, "prev_mcs_goto", "1", &y);
       UF_MOM_ask_assoc_double_array(mom_id, "prev_mcs_goto", "2", &z);
@@ -204,7 +204,7 @@ e-mail: jura@csoft.ru, g00@inbox.ru\nHTTP: http://www.csoft.ru\n\n(c) 2007.\n\n\
       UF_MOM_set_assoc_double_array(mom_id, "pos", "1", dy);
       UF_MOM_set_assoc_double_array(mom_id, "pos", "2", dz);
    	}
-	
+
     if ( !strcmp(argv[1], "M128") )
     {
       UF_MOM_ask_assoc_double_array(mom_id, "mcs_goto", "0", &x);
@@ -217,8 +217,8 @@ e-mail: jura@csoft.ru, g00@inbox.ru\nHTTP: http://www.csoft.ru\n\n(c) 2007.\n\n\
 
     if ( !strcmp(argv[1], "UNLOAD") ) dword_10003334 = 0;
     UF_MOM_set_string(mom_id, "var_unknow", Dest);
-    UF_terminate();	
-	
+    UF_terminate();
+
   return ( 0 ) ;
 }
 
@@ -229,16 +229,16 @@ int sub_10002920()
   UF_system_info_t               zSystemInfo;
   UF_system_info_t               Info[9];
  /*
-	 "pc61-39" "GracyevaME"  "NX 6.0.0.24" 
-	 "pc61-36" "kmo" 
-	 "pc61-43 "user"    
-	 "pc61-30" "KnyazevaLG"  "NX 4.0.0.25" 
-	 "c26-1"   "KutaevaGV"   
-	 "pc61-15" "KalinychevVI"  "NX 4.0.3.3"  
-	 "chigishev-nb"    "Jura"    
+	 "pc61-39" "GracyevaME"  "NX 6.0.0.24"
+	 "pc61-36" "kmo"
+	 "pc61-43 "user"
+	 "pc61-30" "KnyazevaLG"  "NX 4.0.0.25"
+	 "c26-1"   "KutaevaGV"
+	 "pc61-15" "KalinychevVI"  "NX 4.0.3.3"
+	 "chigishev-nb"    "Jura"
 	 "batarev-nb"  "Batarev" "NX 4.0.4.2"
  */
-  
+
   Info[0].user_name = "pc61-39";
   Info[0].program_name = "GracyevaME";
   Info[0].node_name = "NX 6.0.0.24";
@@ -246,11 +246,11 @@ int sub_10002920()
   Info[1].user_name = "pc61-36";
   Info[1].program_name = "kmo";
   Info[1].node_name = NULL;
-  
-  // и так далее
-	 
+
+  // Рё С‚Р°Рє РґР°Р»РµРµ
+
   UF_ask_system_info(&zSystemInfo);
-  
+
   i = 0;
   while ( strcmp(zSystemInfo.node_name, Info.node_name[i] ) )
   {
